@@ -2,6 +2,8 @@ import React from 'react'
 import LoginForm from './LoginForm'
 import RegisterForm from './RegisterForm'
 import './login.css'
+import { setToken } from "../../base/utils/auth";
+import { login } from "../../base/api/user";
 
 class Login extends React.Component {
 
@@ -16,6 +18,12 @@ class Login extends React.Component {
     }
 
     componentWillUnmount () {
+    }
+
+    handleLogin = (username, passwd) => {
+        login(username, passwd).then(res => {
+            setToken(res.data.access_token)
+        }).catch(e => {})
     }
 
     handleGotoRegister = e => {
@@ -33,7 +41,7 @@ class Login extends React.Component {
     render () {
         let form = null
         if (this.state.showBox === 'login') {
-            form = <LoginForm handleRegister={this.handleGotoRegister}/>
+            form = <LoginForm handleRegister={this.handleGotoRegister} handleLogin={this.handleLogin}/>
         } else if (this.state.showBox === 'register') {
             form = <RegisterForm handleReturn={this.handleReturn}/>
         }

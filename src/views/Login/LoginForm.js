@@ -6,6 +6,12 @@ class LoginForm extends React.Component {
 
     constructor () {
         super()
+        this.state = {
+            username: '',
+            password: ''
+        };
+
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount () {
@@ -14,9 +20,19 @@ class LoginForm extends React.Component {
     componentWillUnmount () {
     }
 
+    handleChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
     handleLogin = e => {
         e.preventDefault();
-        this.props.handleLogin();
+        this.props.handleLogin(this.state.username, this.state.password);
     };
 
     handleForgetPassword = e => {
@@ -36,13 +52,17 @@ class LoginForm extends React.Component {
                     <Form.Item>
                         <Input
                             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                            placeholder="Username"/>
+                            name="username"
+                            placeholder="Username"
+                            onChange={this.handleChange}/>
                     </Form.Item>
                     <Form.Item>
                         <Input
                             prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                            name="password"
                             type="password"
-                            placeholder="Password"/>
+                            placeholder="Password"
+                            onChange={this.handleChange}/>
                     </Form.Item>
                     <Form.Item>
                         <Checkbox>Remember me</Checkbox>
