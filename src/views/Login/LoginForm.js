@@ -1,6 +1,10 @@
 import React, {Fragment} from 'react'
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
-import './login.css'
+import { createStore } from 'redux';
+import permissions from '../../redux/reducers';
+import './login.css';
+
+const store = createStore(permissions)
 
 class LoginForm extends React.Component {
 

@@ -33,9 +33,9 @@ class Login extends React.Component {
     render () {
         let form = null
         if (this.state.showBox === 'login') {
-            form = <LoginForm handleRegister={this.handleGotoRegister}></LoginForm>
+            form = <LoginForm handleRegister={this.handleGotoRegister}/>
         } else if (this.state.showBox === 'register') {
-            form = <RegisterForm handleReturn={this.handleReturn}></RegisterForm>
+            form = <RegisterForm handleReturn={this.handleReturn}/>
         }
         return (
             <div className='login-page'>
