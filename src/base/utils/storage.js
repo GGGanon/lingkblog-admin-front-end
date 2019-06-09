@@ -1,5 +1,3 @@
-const LINGK_BLOG_KEY_TOKEN = "LINGK_BLOG_KEY_TOKEN"
-
 export function getValue(key) {
     localStorage.getItem(key)
 }
@@ -12,16 +10,14 @@ export function removeValue(key) {
     localStorage.removeItem(key)
 }
 
-// 获取用户token
-export function getToken() {
-    getValue(LINGK_BLOG_KEY_TOKEN)
+export function getValueSession(key) {
+    sessionStorage.getItem(key)
 }
 
-// 设置用户token
-export function setToken(token) {
-    putValue(LINGK_BLOG_KEY_TOKEN, token)
+export function putValueSession(key, value) {
+    sessionStorage.setItem(key, value)
 }
 
-export function removeToken() {
-    removeToken(LINGK_BLOG_KEY_TOKEN)
+export function removeValueSession(key) {
+    sessionStorage.removeItem(key)
 }
