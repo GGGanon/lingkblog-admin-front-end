@@ -13,7 +13,7 @@ const service = axios.create({
 service.interceptors.request.use(
     config => {
         if (getToken()) {
-            config.headers['X-Token'] = getToken()
+            config.headers['Authorization'] = getToken()
         }
         return config
     },
@@ -26,13 +26,11 @@ service.interceptors.request.use(
 // response interceptor
 service.interceptors.response.use(
     response => {
-        const res = response.data
-
         // if the custom code is not 20000, it is judged as an error.
-        if (res.code >= 300) {
-            return Promise.reject(new Error(res.message || 'Error'))
+        if (response.status >= 300) {
+            return Promise.reject(new Error(response.message || 'Error'))
         } else {
-            return res
+            return response
         }
     },
     error => {

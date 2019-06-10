@@ -4,7 +4,7 @@ const LINGK_BLOG_KEY_TOKEN = "LINGK_BLOG_KEY_TOKEN"
 
 // 获取用户token
 export function getToken() {
-    getValueSession(LINGK_BLOG_KEY_TOKEN)
+    return getValueSession(LINGK_BLOG_KEY_TOKEN)
 }
 
 // 设置用户token

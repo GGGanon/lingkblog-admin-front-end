@@ -1,5 +1,5 @@
 export function getValue(key) {
-    localStorage.getItem(key)
+    return localStorage.getItem(key)
 }
 
 export function putValue(key, value) {
@@ -11,7 +11,7 @@ export function removeValue(key) {
 }
 
 export function getValueSession(key) {
-    sessionStorage.getItem(key)
+    return sessionStorage.getItem(key)
 }
 
 export function putValueSession(key, value) {

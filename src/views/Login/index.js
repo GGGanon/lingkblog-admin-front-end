@@ -2,27 +2,35 @@ import React from 'react'
 import LoginForm from './LoginForm'
 import RegisterForm from './RegisterForm'
 import './login.css'
-import { setToken } from "../../base/utils/auth";
+import { setToken, removeToken } from "../../base/utils/auth";
 import { login } from "../../base/api/user";
 
 class Login extends React.Component {
 
     state = {
         showBox: 'login',   //展示当前表单
-        url: '',  //背景图片
         loading:false,
         loading2:false,
     }
 
     componentDidMount () {
+        removeToken()
     }
 
     componentWillUnmount () {
     }
 
     handleLogin = (username, passwd) => {
-        login(username, passwd).then(res => {
-            setToken(res.data.access_token)
+        login(username, passwd).then(response => {
+            if (response.status >= 200 && response.status < 300) {
+                const data = response.data
+                setToken(data.access_token)
+                const location = {
+                    pathname: '/',
+                    state: {}
+                };
+                this.props.history.replace(location)
+            }
         }).catch(e => {})
     }
 
