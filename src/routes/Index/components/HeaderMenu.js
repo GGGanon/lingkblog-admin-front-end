@@ -1,16 +1,23 @@
 import React from 'react'
 
 import { Menu, Icon } from 'antd';
+import { createStore } from 'redux';
+import reducer from '../../../redux/reducers'
+let { subscribe, dispatch, getState } = createStore(reducer);
 
 class HeaderMenu extends React.Component {
 
     componentDidMount () {
+        // subscribe(this.onMenuChange())
     }
 
     componentWillUnmount () {
     }
 
     render () {
+        subscribe(() => console.log("Store is changed: " + getState()));
+        console.log("header")
+        console.log(getState())
         return (
             <Menu
                 theme="dark"
@@ -23,7 +30,6 @@ class HeaderMenu extends React.Component {
             </Menu>
         )
     }
-
 }
 
 export default HeaderMenu

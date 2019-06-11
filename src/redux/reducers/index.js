@@ -1,12 +1,18 @@
+const SET_TOKEN = "SET_TOKEN"
 const SET_PERMISSIONS = "SET_PERMISSIONS"
 
 const defaultState = {
-    menus: []
+    token: null,
+    menus: null
 }
 
 const reducer = (state = defaultState, action = {}) => {
     const { type, payload } = action;
     switch (type) {
+        case SET_TOKEN:
+            return Object.assign({}, state, {
+                menus: state.token = payload
+            });
         case SET_PERMISSIONS:
             return Object.assign({}, state, {
                 menus: state.menus = payload

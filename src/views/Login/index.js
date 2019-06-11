@@ -2,8 +2,11 @@ import React from 'react'
 import LoginForm from './LoginForm'
 import RegisterForm from './RegisterForm'
 import './login.css'
-import { setToken, removeToken } from "../../base/utils/auth";
+import { setToken, getToken, removeToken } from "../../base/utils/auth";
 import { login } from "../../base/api/user";
+import { createStore } from 'redux';
+import reducer from '../../redux/reducers'
+let { dispatch, getState } = createStore(reducer);
 
 class Login extends React.Component {
 
@@ -25,6 +28,10 @@ class Login extends React.Component {
             if (response.status >= 200 && response.status < 300) {
                 const data = response.data
                 setToken(data.access_token)
+                dispatch({
+                    type: 'SET_TOKEN',
+                    payload: data.access_token
+                })
                 const location = {
                     pathname: '/',
                     state: {}
