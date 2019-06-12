@@ -4,16 +4,12 @@ import RegisterForm from './RegisterForm'
 import './login.css'
 import { setToken, getToken, removeToken } from "../../base/utils/auth";
 import { login } from "../../base/api/user";
-import { createStore } from 'redux';
-import reducer from '../../redux/reducers'
-let { dispatch, getState } = createStore(reducer);
+import store from '../../redux/redux';
 
 class Login extends React.Component {
 
     state = {
-        showBox: 'login',   //展示当前表单
-        loading:false,
-        loading2:false,
+        showBox: 'login'
     }
 
     componentDidMount () {
@@ -28,7 +24,7 @@ class Login extends React.Component {
             if (response.status >= 200 && response.status < 300) {
                 const data = response.data
                 setToken(data.access_token)
-                dispatch({
+                store.dispatch({
                     type: 'SET_TOKEN',
                     payload: data.access_token
                 })

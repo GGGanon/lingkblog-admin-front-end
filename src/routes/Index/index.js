@@ -3,13 +3,25 @@ import { Layout, Avatar } from 'antd';
 
 import HeaderMenu from './components/HeaderMenu'
 import Breadcrumb from "./components/Breadcrumb";
+import store from '../../redux/redux.js';
 
 class Index extends React.Component {
 
+    state = {
+        menus: []
+    }
+
     componentDidMount () {
+        store.subscribe(() => this.onHeaderMenuChanged(store.getState().menus));
     }
 
     componentWillUnmount () {
+    }
+
+    onHeaderMenuChanged (menus) {
+        this.setState({
+            menus: menus
+        })
     }
 
     render () {
@@ -19,7 +31,7 @@ class Index extends React.Component {
                     <div style={styles.logo}>
                         Logo
                     </div>
-                    <HeaderMenu/>
+                    <HeaderMenu menus={this.state.menus}/>
                     <div style={{float: 'right'}}>
                         <Avatar size={40} icon="user" />
                     </div>
