@@ -2,8 +2,14 @@ import React from 'react'
 import { Layout, Avatar } from 'antd';
 
 import HeaderMenu from './components/HeaderMenu'
-import Breadcrumb from "./components/Breadcrumb";
 import store from '../../redux/redux.js';
+import { Route } from 'react-router-dom'
+import HomePage from "../../views/homepage"
+import Articles from "../../views/articles"
+import Dashboard from "../../views/dashboard"
+import Sites from "../../views/site";
+import Accounts from "../../views/account";
+import PrivateRoute from "../../components/PrivateRoute";
 
 class Index extends React.Component {
 
@@ -37,10 +43,11 @@ class Index extends React.Component {
                     </div>
                 </Layout.Header>
                 <Layout.Content style={{ padding: '0 50px' }}>
-                    <Breadcrumb items={['Dashboard']}/>
-                    <div style={{ background: '#fff', padding: 24, minHeight: 'calc(100vh - 186px)' }}>
-                        <div>Dashboard</div>
-                    </div>
+                    <Route path='/home' component={HomePage}/>
+                    <PrivateRoute path='/articles' component={Articles}/>
+                    <PrivateRoute path='/dashboard' component={Dashboard}/>
+                    <PrivateRoute path='/sites' component={Sites}/>
+                    <PrivateRoute path='/accounts' component={Accounts}/>
                 </Layout.Content>
                 <Layout.Footer style={{ textAlign: 'center' }}>LingKBlog ©2019 Created by GGGanon</Layout.Footer>
             </Layout>

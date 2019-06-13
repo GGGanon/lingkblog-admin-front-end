@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { getToken } from '../utils/auth'
+import { message } from 'antd';
+
 import { createStore } from 'redux';
 import reducer from '../../redux/reducers'
 let { getState } = createStore(reducer);
@@ -32,7 +33,6 @@ service.interceptors.response.use(
         }
     },
     error => {
-        console.log('err' + error) // for debug
         return Promise.reject(error)
     }
 )
