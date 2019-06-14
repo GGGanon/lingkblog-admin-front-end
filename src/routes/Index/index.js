@@ -3,13 +3,8 @@ import { Layout, Avatar } from 'antd';
 
 import HeaderMenu from './components/HeaderMenu'
 import store from '../../redux/redux.js';
-import { Route } from 'react-router-dom'
-import HomePage from "../../views/homepage"
-import Articles from "../../views/articles"
-import Dashboard from "../../views/dashboard"
-import Sites from "../../views/site";
-import Accounts from "../../views/account";
-import PrivateRoute from "../../components/PrivateRoute";
+import { Route, Switch, Redirect } from 'react-router-dom'
+import asyncComponent from "../../components/AsyncComponent"
 
 class Index extends React.Component {
 
@@ -43,11 +38,11 @@ class Index extends React.Component {
                     </div>
                 </Layout.Header>
                 <Layout.Content style={{ padding: '0 50px' }}>
-                    <Route path='/home' component={HomePage}/>
-                    <PrivateRoute path='/articles' component={Articles}/>
-                    <PrivateRoute path='/dashboard' component={Dashboard}/>
-                    <PrivateRoute path='/sites' component={Sites}/>
-                    <PrivateRoute path='/accounts' component={Accounts}/>
+                    <Switch>
+                        <Route path='/home' component={asyncComponent(() => import("../../views/homepage"))}/>
+                        {this.state.menus.map(menu => <Route path={menu.path} component={asyncComponent(() => import(`../../views/${menu.name}`))}/>)}
+                        <Redirect to="/404" />
+                    </Switch>
                 </Layout.Content>
                 <Layout.Footer style={{ textAlign: 'center' }}>LingKBlog ©2019 Created by GGGanon</Layout.Footer>
             </Layout>
