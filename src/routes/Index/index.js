@@ -4,7 +4,6 @@ import { Layout, Avatar } from 'antd';
 import HeaderMenu from './components/HeaderMenu'
 import store from '../../redux/redux.js';
 import Content from "../content";
-import {getMenus} from "../../base/api/permission";
 
 class Index extends React.Component {
 
@@ -13,23 +12,10 @@ class Index extends React.Component {
     };
 
     componentDidMount () {
+        this.setState({
+            menus: store.getState().menus
+        });
         store.subscribe(() => this.onHeaderMenuChanged(store.getState().menus));
-        if (store.getState().menus == null) {
-            getMenus().then(response => {
-                store.dispatch({
-                    type: "SET_PERMISSIONS",
-                    payload: response.data
-                });
-                if (this.props.location.state != null && this.props.location.state.from != null) {
-                    const locationObj = this.props.location.state.from;
-                    const location = {
-                        pathname: locationObj.pathname,
-                        state: {}
-                    };
-                    this.props.history.replace(location)
-                }
-            });
-        }
     }
 
     componentWillUnmount () {

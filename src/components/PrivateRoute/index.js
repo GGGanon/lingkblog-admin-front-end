@@ -16,12 +16,12 @@ const PrivateRoute = ({component: Component, ...rest}) => {
     return (
         <Route {...rest} render={(props) => {
             if (isAuthenticated) {
-                if (path === '/') {
+                if (store.getState().menus == null) {
+                    return <Redirect to={{pathname: '/launcher', state: {from: props.location}}}/>
+                } else if (path === '/') {
                     return <Redirect to={{pathname: '/home', state: {from: props.location}}}/>
                 } else if (path === '/home') {
                     return <Component {...props} />
-                } else if (store.getState().menus == null) {
-                    return <Redirect to={{pathname: '/home', state: {from: props.location}}}/>
                 } else {
                     return <Component {...props} />
                 }
