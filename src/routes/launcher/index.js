@@ -6,12 +6,14 @@ import {getMenus} from "../../base/api/permission";
 class Launcher extends React.Component {
 
     componentDidMount () {
+        console.log("====")
         if (store.getState().menus == null) {
             getMenus().then(response => {
                 store.dispatch({
                     type: "SET_PERMISSIONS",
                     payload: response.data
                 });
+                console.log(store.getState())
                 if (this.props.location.state != null && this.props.location.state.from != null) {
                     const locationObj = this.props.location.state.from;
                     const location = {
