@@ -1,0 +1,40 @@
+.login-page {
+    position: absolute;
+    background: #f7f7f7;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+}
+
+.login-panel {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    background: #FAFAFA;
+    color: #000;
+    width: 300px;
+    height: 360px;
+    border-radius: 6px;
+    border: 1px solid #F5F5F5;
+    box-shadow: 3px 5px 10px 0 #64B5F6;
+    box-sizing: content-box;
+    transition:200ms;
+    margin: -200px 0 0 -120px;
+}
+
+.login-panel:hover {
+    box-shadow: 3px 8px 12px 2px #64B5F6;
+    margin: -210px 0 0 -120px;
+}
+
+.login-panel__logo {
+    margin-top: 20px;
+}
+
+.login-form-forgot {
+    float: right;
+}
+
+.login-form-button {
+    width: 100%;
+}
