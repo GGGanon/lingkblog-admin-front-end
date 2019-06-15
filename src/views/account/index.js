@@ -1,4 +1,6 @@
 import React from 'react'
+import { Layout } from 'antd';
+
 import Breadcrumb from "../../components/Breadcrumb";
 
 class Accounts extends React.Component {
@@ -11,7 +13,7 @@ class Accounts extends React.Component {
 
     render () {
         return (
-            <Template>
+            <React.Fragment>
                 <Layout.Content style={{ padding: '0 50px' }}>
                     <div className='accounts'>
                         <Breadcrumb items={['Accounts']}/>
@@ -21,7 +23,7 @@ class Accounts extends React.Component {
                     </div>
                 </Layout.Content>
                 <Layout.Footer style={{ textAlign: 'center' }}>LingKBlog ©2019 Created by GGGanon</Layout.Footer>
-            </Template>
+            </React.Fragment>
         )
     }
 }
