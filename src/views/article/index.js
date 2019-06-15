@@ -1,6 +1,8 @@
 import React from 'react'
+import '../common/common.css'
 
 import Breadcrumb from "../../components/Breadcrumb";
+import ArticleList from "./ArticleList";
 
 class Articles extends React.Component {
 
@@ -14,8 +16,8 @@ class Articles extends React.Component {
         return (
             <div className='articles'>
                 <Breadcrumb items={['Articles']}/>
-                <div style={{ background: '#fff', padding: 24, minHeight: 'calc(100vh - 186px)' }}>
-                    <div>Articles</div>
+                <div className="content">
+                    <ArticleList/>
                 </div>
             </div>
         )

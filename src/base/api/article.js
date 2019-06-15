@@ -2,12 +2,12 @@ import request from './index'
 
 /**
  * 获取文章列表
- * @param title
- * @param categoryId
  * @param page
  * @param limit
+ * @param title
+ * @param categoryId
  */
-export function getArticleList(title, categoryId, page, limit) {
+export function getArticleList(page, limit, title, categoryId) {
     return request({
         url: '/articles',
         method: 'get',

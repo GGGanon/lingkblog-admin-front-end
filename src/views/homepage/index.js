@@ -1,5 +1,5 @@
 import React from 'react'
-import {Layout} from 'antd';
+import "../common/common.css"
 
 import Breadcrumb from "../../components/Breadcrumb";
 
@@ -15,7 +15,7 @@ class HomePage extends React.Component {
         return (
             <div className='home'>
                 <Breadcrumb/>
-                <div style={{background: '#fff', padding: 24, minHeight: 'calc(100vh - 186px)'}}>
+                <div className="content">
                     <div>Home</div>
                 </div>
             </div>

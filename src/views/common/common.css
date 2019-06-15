@@ -1,0 +1,7 @@
+.content {
+    background: #fff;
+    padding: 16px;
+    min-height: calc(100vh - 186px);
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px 0 #BDBDBD;
+}

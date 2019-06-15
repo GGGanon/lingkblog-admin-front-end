@@ -8,26 +8,6 @@ import asyncComponent from "../../components/AsyncComponent";
 
 class Index extends React.Component {
 
-    state = {
-        menus: []
-    };
-
-    componentDidMount () {
-        this.setState({
-            menus: store.getState().menus
-        });
-        store.subscribe(() => this.onHeaderMenuChanged(store.getState().menus));
-    }
-
-    componentWillUnmount () {
-    }
-
-    onHeaderMenuChanged (menus) {
-        this.setState({
-            menus: menus
-        })
-    }
-
     render () {
         let routers = [];
         if (store.getState().menus != null) {
@@ -39,20 +19,20 @@ class Index extends React.Component {
                     <div style={styles.logo}>
                         Logo
                     </div>
-                    <HeaderMenu menus={this.state.menus}/>
+                    <HeaderMenu menus={store.getState().menus}/>
                     <div style={{float: 'right'}}>
                         <Avatar size={40} icon="user" />
                     </div>
                 </Layout.Header>
                 <React.Fragment>
-                    <Layout.Content style={{ padding: '0 50px' }}>
+                    <Layout.Content style={{ padding: '0 32px' }}>
                         <Switch>
                             <Route path='/home' component={asyncComponent(() => import("../../views/homepage"))}/>
                             {routers}
                             <Redirect to="/404" />
                         </Switch>
                     </Layout.Content>
-                    <Layout.Footer style={{ textAlign: 'center' }}>LingKBlog ©2019 Created by GGGanon</Layout.Footer>
+                    <Layout.Footer style={{ textAlign: 'center', marginTop: '12px', paddingTop: '10px' }}>LingKBlog ©2019 Created by GGGanon</Layout.Footer>
                 </React.Fragment>
             </Layout>
         )
