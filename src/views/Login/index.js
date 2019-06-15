@@ -10,7 +10,7 @@ class Login extends React.Component {
 
     state = {
         showBox: 'login'
-    }
+    };
 
     componentDidMount () {
         removeToken()
