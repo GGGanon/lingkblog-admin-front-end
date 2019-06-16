@@ -35,7 +35,7 @@ class Login extends React.Component {
                 this.props.history.replace(location)
             }
         }).catch(e => {})
-    }
+    };
 
     handleGotoRegister = e => {
         this.setState({

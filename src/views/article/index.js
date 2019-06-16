@@ -2,7 +2,7 @@ import React from 'react'
 import '../common/common.css'
 
 import Breadcrumb from "../../components/Breadcrumb";
-import ArticleList from "./ArticleList";
+import ArticleList from "./ArticleList/index";
 
 class Articles extends React.Component {
 
