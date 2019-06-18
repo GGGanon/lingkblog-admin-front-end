@@ -3,6 +3,9 @@ import '../common/common.css'
 
 import Breadcrumb from "../../components/Breadcrumb";
 import ArticleList from "./ArticleList/index";
+import ArticleEdit from "./ArticleEdit/index";
+import { Route, Switch, Redirect } from 'react-router-dom'
+// import asyncComponent from "../../components/AsyncComponent";
 
 class Articles extends React.Component {
 
@@ -15,9 +18,13 @@ class Articles extends React.Component {
     render () {
         return (
             <div className='articles'>
-                <Breadcrumb items={['Articles']}/>
+                <Breadcrumb items={this.props.location.pathname.split('/')}/>
                 <div className="content">
-                    <ArticleList/>
+                    <Switch>
+                        <Route path={`${this.props.match.path}/edit/:id`} component={ArticleEdit}/>
+                        <Route path={`${this.props.match.path}/`} component={ArticleList}/>
+                        <Redirect to="/404" />
+                    </Switch>
                 </div>
             </div>
         )

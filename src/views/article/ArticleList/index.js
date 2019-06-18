@@ -24,14 +24,12 @@ class ArticleList extends React.Component {
         try {
             const response = await getArticleList(page, limit);
             if (response.status >= 200 && response.status < 300) {
-                console.log(response.data);
                 this.setState({
                     data: response.data["articles"],
                     page: page,
                     total: response.data["total"],
                     pages: response.data["pages"]
                 });
-                console.log(this.state)
             }
         } catch (e) {
             console.log(e)

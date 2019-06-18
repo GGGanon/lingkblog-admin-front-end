@@ -10,7 +10,7 @@ const BASE_API = 'http://localhost:5000/admin-api'
 const service = axios.create({
     baseURL: BASE_API,
     timeout: 5000 // request timeout
-})
+});
 
 // request interceptor
 service.interceptors.request.use(config => {

@@ -1,14 +1,14 @@
 import React from 'react'
 
-class ArticleEdit extends React.Component {
+class Index extends React.Component {
 
     render () {
         return (
             <div>
-                Articles
+                ArticleEdit
             </div>
         )
     }
 }
 
-export default ArticleEdit;
+export default Index;

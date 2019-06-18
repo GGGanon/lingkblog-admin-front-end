@@ -1,5 +1,6 @@
 import React from 'react'
 import {Table, Tag, Button, Tooltip} from 'antd'
+import { Link } from 'react-router-dom'
 import {formatDate} from "../../../../base/utils/date";
 
 const {Column} = Table;
@@ -91,7 +92,9 @@ class ArticleTable extends React.Component {
                     key="id"
                     width={120}
                     align='center'
-                    render={id => (<Button>编辑</Button>)}
+                    render={id => (
+                        <Link to={`/articles/edit/${id}`} ><Button>编辑</Button></Link>
+                    )}
                 />
             </Table>
         )
