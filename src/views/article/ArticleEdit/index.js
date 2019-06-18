@@ -1,14 +1,16 @@
 import React from 'react'
+import RichEditer from "./components/RichTextEditor";
+import MarkdownEditor from "./components/MarkdownEditor";
 
-class Index extends React.Component {
+class ArticleEdit extends React.Component {
 
     render () {
         return (
             <div>
-                ArticleEdit
+                <MarkdownEditor/>
             </div>
         )
     }
 }
 
-export default Index;
+export default ArticleEdit;
