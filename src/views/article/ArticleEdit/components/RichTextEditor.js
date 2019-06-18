@@ -1,7 +1,5 @@
 import React from 'react'
-// 引入编辑器组件
 import BraftEditor from 'braft-editor'
-// 引入编辑器样式
 import 'braft-editor/dist/index.css'
 
 class RichEditer extends React.Component {
@@ -20,7 +18,7 @@ class RichEditer extends React.Component {
     }
 
     submitContent = async () => {
-        const htmlContent = this.state.editorState.toHTML()
+        // const htmlContent = this.state.editorState.toHTML()
     };
 
     handleEditorChange = (editorState) => {

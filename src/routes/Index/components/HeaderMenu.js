@@ -5,10 +5,6 @@ import { Menu } from 'antd';
 
 class HeaderMenu extends React.Component {
 
-    constructor() {
-        super();
-    }
-
     componentDidMount () {
     }
 

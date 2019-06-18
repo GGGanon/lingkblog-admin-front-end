@@ -1,11 +1,10 @@
 import axios from 'axios'
-import { message } from 'antd';
 
 import { createStore } from 'redux';
 import reducer from '../../redux/reducers'
 let { getState } = createStore(reducer);
 
-const BASE_API = 'http://localhost:5000/admin-api'
+const BASE_API = 'http://localhost:5000/admin-api';
 
 const service = axios.create({
     baseURL: BASE_API,
@@ -19,7 +18,7 @@ service.interceptors.request.use(config => {
     }
     return config
 }, error => {
-    console.log(error)
+    console.log(error);
     return Promise.reject(error)
 });
 
