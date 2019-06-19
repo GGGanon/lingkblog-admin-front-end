@@ -1,6 +1,7 @@
 import React from 'react'
 import { getArticleList } from "../../../base/api/article"
 import ArticleTable from "./components/ArticleTable";
+import { Button, Icon } from 'antd';
 
 class ArticleList extends React.Component {
 
@@ -47,6 +48,9 @@ class ArticleList extends React.Component {
     render () {
         return (
             <div>
+                <div style={style.form}>
+                    <Button type="primary" icon={'plus'} style={style.addButton}>写文章</Button>
+                </div>
                 <ArticleTable
                     data={this.state.data}
                     loading={this.state.loading}
@@ -61,3 +65,12 @@ class ArticleList extends React.Component {
 }
 
 export default ArticleList;
+
+const style = {
+    form: {
+        textAlign: "right"
+    },
+    addButton: {
+        marginBottom: "10px"
+    }
+}

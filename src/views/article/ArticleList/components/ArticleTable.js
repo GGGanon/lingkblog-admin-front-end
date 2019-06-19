@@ -1,12 +1,11 @@
 import React from 'react'
-import {Table, Tag, Button, Tooltip} from 'antd'
+import {Table, Tag, Button, Tooltip, Icon, Dropdown} from 'antd'
 import { Link } from 'react-router-dom'
 import {formatDate} from "../../../../base/utils/date";
 
 const {Column} = Table;
 
 class ArticleTable extends React.Component {
-
 
     onPaginationChange = (pagination, filters, sorter) => {
         this.props.onPaginationChange(pagination, filters, sorter);
@@ -46,21 +45,7 @@ class ArticleTable extends React.Component {
                     title="Tags"
                     dataIndex='tags'
                     key="tags"
-                    render={tags => (
-                        <span>
-                            {tags.map(tag => {
-                                let color = tag.length > 5 ? 'geekblue' : 'green';
-                                if (tag === 'loser') {
-                                    color = 'volcano';
-                                }
-                                return (
-                                    <Tag color={color} key={tag}>
-                                        {tag}
-                                    </Tag>
-                                );
-                            })}
-                        </span>
-                    )}
+                    render={tags => (<span>{tags.map(tag => (<Tag color={'blue'} key={tag}>{tag}</Tag>))}</span>)}
                 />
                 <Column
                     title="状态"
@@ -70,9 +55,12 @@ class ArticleTable extends React.Component {
                     render={status => (
                         <span>
                             {
-                                {"1": "已发布", "2": "草稿"}[status]
+                                {
+                                    "1": <Tag color={'#2db7f5'}>已发布</Tag>,
+                                    "2": <Tag color={'#87d068'}>草稿</Tag>
+                                }[status]
                             }
-                            </span>
+                        </span>
                     )}
                 />
                 <Column
@@ -90,10 +78,14 @@ class ArticleTable extends React.Component {
                     title="编辑"
                     dataIndex='id'
                     key="id"
-                    width={120}
+                    width={150}
                     align='center'
                     render={id => (
-                        <Link to={`/articles/edit/${id}`} ><Button>编辑</Button></Link>
+                        <React.Fragment>
+                            <Link to={`/articles/edit/${id}`} ><Button size={`small`} type="link" icon={'edit'}/></Link>
+                            <Button size={`small`} type="link" icon={'setting'} style={{color: '#9E9E9E'}}/>
+                            <Button size={`small`} type="link" icon={'delete'} style={{color: 'red'}}/>
+                        </React.Fragment>
                     )}
                 />
             </Table>
