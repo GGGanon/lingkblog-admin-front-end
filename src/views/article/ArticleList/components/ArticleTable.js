@@ -75,7 +75,7 @@ class ArticleTable extends React.Component {
                     )}
                 />
                 <Column
-                    title="编辑"
+                    title="操作"
                     dataIndex='id'
                     key="id"
                     width={150}

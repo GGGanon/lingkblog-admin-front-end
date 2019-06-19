@@ -2,6 +2,9 @@ import React from 'react'
 import { getArticleList } from "../../../base/api/article"
 import ArticleTable from "./components/ArticleTable";
 import { Button, Icon } from 'antd';
+import { Link } from 'react-router-dom'
+
+import '../../common/common.css'
 
 class ArticleList extends React.Component {
 
@@ -47,9 +50,11 @@ class ArticleList extends React.Component {
 
     render () {
         return (
-            <div>
+            <div className="content">
                 <div style={style.form}>
-                    <Button type="primary" icon={'plus'} style={style.addButton}>写文章</Button>
+                    <Link to={`${this.props.match.url}/write`}>
+                        <Button style={style.addButton} type="primary" icon={'plus'}>写文章</Button>
+                    </Link>
                 </div>
                 <ArticleTable
                     data={this.state.data}

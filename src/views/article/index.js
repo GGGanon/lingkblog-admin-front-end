@@ -19,13 +19,15 @@ class Articles extends React.Component {
         return (
             <div className='articles'>
                 <Breadcrumb items={this.props.location.pathname.split('/')}/>
-                <div className="content">
-                    <Switch>
-                        <Route path={`${this.props.match.path}/edit/:id`} component={ArticleEdit}/>
-                        <Route path={`${this.props.match.path}/`} component={ArticleList}/>
-                        <Redirect to="/404" />
-                    </Switch>
-                </div>
+                <Switch>
+                    <Route path={`${this.props.match.path}/write`} component={ArticleEdit}/>
+                    <Route path={`${this.props.match.path}/edit/:id`} component={ArticleEdit}/>
+                    <Route path={`${this.props.match.path}/`} component={ArticleList}/>
+                    <Redirect to="/404" />
+                </Switch>
+                {/*<div className="content">*/}
+                    {/**/}
+                {/*</div>*/}
             </div>
         )
     }
