@@ -89,6 +89,16 @@ export function updateArticle(id, categoryId, createdAt, status, summary, tags, 
     });
 }
 
+export function updateArticleStatus(id, status) {
+    return request({
+        url: `/articles/${id}`,
+        method: 'patch',
+        data: {
+            status: status,
+        }
+    });
+}
+
 
 export function deleteArticle(id) {
     return request({

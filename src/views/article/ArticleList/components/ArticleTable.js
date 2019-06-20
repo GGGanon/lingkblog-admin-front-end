@@ -1,5 +1,5 @@
 import React from 'react'
-import {Table, Tag, Button, Tooltip, Icon, Dropdown} from 'antd'
+import {Table, Tag, Button, Tooltip} from 'antd'
 import { Link } from 'react-router-dom'
 import {formatDate} from "../../../../base/utils/date";
 
@@ -9,6 +9,16 @@ class ArticleTable extends React.Component {
 
     onPaginationChange = (pagination, filters, sorter) => {
         this.props.onPaginationChange(pagination, filters, sorter);
+    };
+
+    onSettingClick = (id, status, e) => {
+        e.preventDefault();
+        this.props.onSettingClick(id, status);
+    };
+
+    onDeleteClick = (id, e) => {
+        e.preventDefault();
+        this.props.onDeleteClick(id);
     };
 
     render() {
@@ -81,11 +91,23 @@ class ArticleTable extends React.Component {
                     key="id"
                     width={150}
                     align='center'
-                    render={id => (
+                    render={(id, record) => (
                         <React.Fragment>
-                            <Link to={`/articles/edit/${id}`} ><Button size={`small`} type="link" icon={'edit'}/></Link>
-                            <Button size={`small`} type="link" icon={'setting'} style={{color: '#9E9E9E'}}/>
-                            <Button size={`small`} type="link" icon={'delete'} style={{color: 'red'}}/>
+                            <Link to={`/articles/edit/${id}`} >
+                                <Button size={`small`} type="link" icon={'edit'}/>
+                            </Link>
+                            <Button
+                                size={`small`}
+                                type="link"
+                                icon={'setting'}
+                                style={{color: '#9E9E9E'}}
+                                onClick={(e) => this.onSettingClick(id, record.status, e)}/>
+                            <Button
+                                size={`small`}
+                                type="link"
+                                icon={'delete'}
+                                style={{color: 'red'}}
+                                onClick={(e) => this.onDeleteClick(id, e)}/>
                         </React.Fragment>
                     )}
                 />
