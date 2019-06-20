@@ -50,13 +50,12 @@ class ArticleList extends React.Component {
 
     render () {
         return (
-            <div className="content">
-                <div style={style.form}>
-                    <Link to={`${this.props.match.url}/write`}>
-                        <Button style={style.addButton} type="primary" icon={'plus'}>写文章</Button>
-                    </Link>
-                </div>
+            <div className="content" style={{position: "relative", paddingBottom: "88px"}}>
+                {/*<div style={style.form}>*/}
+                    {/**/}
+                {/*</div>*/}
                 <ArticleTable
+                    style={style.articleTable}
                     data={this.state.data}
                     loading={this.state.loading}
                     currentPage={this.state.page}
@@ -64,6 +63,9 @@ class ArticleList extends React.Component {
                     total={this.state.total}
                     onPaginationChange={this.onPaginationChange}
                 />
+                <Link to={`${this.props.match.url}/write`}>
+                    <Button style={style.addButton} size="large" type="primary" shape="circle" icon={'plus'}/>
+                </Link>
             </div>
         )
     }
@@ -76,6 +78,8 @@ const style = {
         textAlign: "right"
     },
     addButton: {
-        marginBottom: "10px"
+        position: "absolute",
+        right: "28px",
+        bottom: "28px"
     }
 }

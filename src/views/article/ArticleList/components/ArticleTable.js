@@ -15,7 +15,8 @@ class ArticleTable extends React.Component {
         const pagination = {
             current: this.props.currentPage,
             pageSize: this.props.size,
-            total: this.props.total
+            total: this.props.total,
+            position: "top"
         };
         return (
             <Table
@@ -36,16 +37,16 @@ class ArticleTable extends React.Component {
                     )}
                 />
                 <Column
-                    title="Category"
-                    dataIndex='category_id'
-                    key="category_id"
-                    width={100}
-                />
-                <Column
                     title="Tags"
                     dataIndex='tags'
                     key="tags"
                     render={tags => (<span>{tags.map(tag => (<Tag color={'blue'} key={tag}>{tag}</Tag>))}</span>)}
+                />
+                <Column
+                    title="Category"
+                    dataIndex='category_id'
+                    key="category_id"
+                    width={100}
                 />
                 <Column
                     title="状态"

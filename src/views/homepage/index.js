@@ -14,7 +14,7 @@ class HomePage extends React.Component {
     render() {
         return (
             <div className='home'>
-                <Breadcrumb/>
+                <Breadcrumb items={['Home']}/>
                 <div className="content">
                     <div>Home</div>
                 </div>

@@ -19,7 +19,7 @@ class Index extends React.Component {
                     <div style={styles.logo}>
                         Logo
                     </div>
-                    <HeaderMenu menus={store.getState().menus}/>
+                    <HeaderMenu menus={store.getState().menus} location={this.props.location.pathname}/>
                     <div style={{float: 'right'}}>
                         <Avatar size={40} icon="user" />
                     </div>
