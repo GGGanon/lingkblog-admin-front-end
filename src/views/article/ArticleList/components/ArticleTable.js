@@ -93,7 +93,7 @@ class ArticleTable extends React.Component {
                     align='center'
                     render={(id, record) => (
                         <React.Fragment>
-                            <Link to={`/articles/edit/${id}`} >
+                            <Link to={`/articles/edit/${record.uuid}`} >
                                 <Button size={`small`} type="link" icon={'edit'}/>
                             </Link>
                             <Button

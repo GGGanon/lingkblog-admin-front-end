@@ -135,7 +135,7 @@ class ArticleList extends React.Component {
                     <Button style={style.addButton} size="large" type="primary" shape="circle" icon={'plus'}/>
                 </Link>
                 <Modal
-                    title="更新文章状态"
+                    title="设置"
                     visible={this.state.settingData.visible}
                     onOk={this.handleSettingOk}
                     onCancel={this.handleSettingCancel}>

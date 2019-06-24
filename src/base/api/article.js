@@ -32,6 +32,17 @@ export function getArticleDetail(id) {
 }
 
 /**
+ * 获取文章详细信息
+ * @param uid
+ */
+export function getArticleDetailByUid(uid) {
+    return request({
+        url: `/articles/${uid}`,
+        method: 'get'
+    });
+}
+
+/**
  * 发布文章
  * @param categoryId
  * @param content
