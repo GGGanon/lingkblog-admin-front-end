@@ -4,10 +4,6 @@ import './login.css'
 
 class RegisterForm extends React.Component {
 
-    constructor () {
-        super()
-    }
-
     componentDidMount () {
     }
 
@@ -48,7 +44,7 @@ class RegisterForm extends React.Component {
                         <Button type="primary" htmlType="submit" className="login-form-button" onClick={this.handleRegister}>
                             Register Now!
                         </Button>
-                        <a className="login-form-forgot" href='javascript:void(0);' onClick={this.handleReturn} >
+                        <a className="login-form-forgot" href={`javascript:void(0);`} onClick={this.handleReturn} >
                             Return
                         </a>
                     </Form.Item>

@@ -1,6 +1,6 @@
 import React from 'react'
 import store from "../../redux/redux";
-import { Spin, Alert } from 'antd';
+import { Spin } from 'antd';
 import {getMenus} from "../../base/api/permission";
 
 class Launcher extends React.Component {
@@ -29,9 +29,6 @@ class Launcher extends React.Component {
             <div style={styles.loadingContainer}>
                 <Spin style={styles.loading} size="large" tip="系统正在启动..."/>
             </div>
-            // <div className='loading'>
-            //     Loading
-            // </div>
         )
     }
 }

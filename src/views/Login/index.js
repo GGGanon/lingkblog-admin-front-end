@@ -2,7 +2,7 @@ import React from 'react'
 import LoginForm from './LoginForm'
 import RegisterForm from './RegisterForm'
 import './login.css'
-import { setToken, getToken, removeToken } from "../../base/utils/auth";
+import { setToken, removeToken } from "../../base/utils/auth";
 import { login } from "../../base/api/user";
 import store from '../../redux/redux';
 
@@ -22,8 +22,8 @@ class Login extends React.Component {
     handleLogin = (username, passwd) => {
         login(username, passwd).then(response => {
             if (response.status >= 200 && response.status < 300) {
-                const data = response.data
-                setToken(data.access_token)
+                const data = response.data;
+                setToken(data.access_token);
                 store.dispatch({
                     type: 'SET_TOKEN',
                     payload: data.access_token
@@ -35,7 +35,7 @@ class Login extends React.Component {
                 this.props.history.replace(location)
             }
         }).catch(e => {})
-    }
+    };
 
     handleGotoRegister = e => {
         this.setState({
@@ -47,10 +47,10 @@ class Login extends React.Component {
         this.setState({
             showBox: 'login'
         })
-    }
+    };
 
     render () {
-        let form = null
+        let form = null;
         if (this.state.showBox === 'login') {
             form = <LoginForm handleRegister={this.handleGotoRegister} handleLogin={this.handleLogin}/>
         } else if (this.state.showBox === 'register') {

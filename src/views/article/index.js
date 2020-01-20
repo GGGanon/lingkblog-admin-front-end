@@ -1,7 +1,11 @@
 import React from 'react'
-import { Layout } from 'antd';
+import '../common/common.css'
 
 import Breadcrumb from "../../components/Breadcrumb";
+import ArticleList from "./ArticleList/index";
+import ArticleEdit from "./ArticleEdit/index";
+import { Route, Switch, Redirect } from 'react-router-dom'
+// import asyncComponent from "../../components/AsyncComponent";
 
 class Articles extends React.Component {
 
@@ -13,17 +17,18 @@ class Articles extends React.Component {
 
     render () {
         return (
-            <React.Fragment>
-                <Layout.Content style={{ padding: '0 50px' }}>
-                    <div className='articles'>
-                        <Breadcrumb items={['Articles']}/>
-                        <div style={{ background: '#fff', padding: 24, minHeight: 'calc(100vh - 186px)' }}>
-                            <div>Articles</div>
-                        </div>
-                    </div>
-                </Layout.Content>
-                <Layout.Footer style={{ textAlign: 'center' }}>LingKBlog ©2019 Created by GGGanon</Layout.Footer>
-            </React.Fragment>
+            <div className='articles'>
+                <Breadcrumb items={this.props.location.pathname.split('/')}/>
+                <Switch>
+                    <Route path={`${this.props.match.path}/write`} component={ArticleEdit}/>
+                    <Route path={`${this.props.match.path}/edit/:id`} component={ArticleEdit}/>
+                    <Route path={`${this.props.match.path}/`} component={ArticleList}/>
+                    <Redirect to="/404" />
+                </Switch>
+                {/*<div className="content">*/}
+                    {/**/}
+                {/*</div>*/}
+            </div>
         )
     }
 }

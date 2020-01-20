@@ -1,0 +1,26 @@
+.content {
+    background: #fff;
+    padding: 16px;
+    min-height: calc(100vh - 186px);
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px 0 #BDBDBD;
+}
+
+.text-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.text-input:hover {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.text-input:active {
+    background: transparent;
+    border: none;
+    outline: none;
+}
